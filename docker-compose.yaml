@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  ninja-ai-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ninja-ai-service
+    image: ninja-ai-service
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run start:dev
