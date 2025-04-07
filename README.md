@@ -16,8 +16,8 @@ Ninja AI Service is a RESTful API built with [NestJS](https://nestjs.com/).
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/ninja-ai-service.git
-   cd ninja-ai-service
+   git clone https://github.com/your-repo/mcp-ai-service.git
+   cd mcp-ai-service
    ```
 
 2. Install dependencies:

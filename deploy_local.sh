@@ -4,9 +4,9 @@ set -euo pipefail
 
 # Constants
 CLUSTER_NAME="local-cluster"
-NAMESPACE="ninja-ai-service-dev"
-IMAGE_NAME="ninja-ai-service:0.0.1"
-SERVICE_NAME="ninja-ai-service"
+NAMESPACE="mcp-ai-service-dev"
+IMAGE_NAME="mcp-ai-service:0.0.1"
+SERVICE_NAME="mcp-ai-service"
 VALUES_DIR="helm/values-dev.yaml"
 DEPLOYMENT_NAME=""
 

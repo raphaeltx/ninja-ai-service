@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  ninja-ai-service:
+  mcp-ai-service:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ninja-ai-service
-    image: ninja-ai-service
+    container_name: mcp-ai-service
+    image: mcp-ai-service
     ports:
       - "3000:3000"
     environment:
