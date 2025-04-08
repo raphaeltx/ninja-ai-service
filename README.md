@@ -1,6 +1,6 @@
-# Ninja AI Service
+# MCP AI Service
 
-Ninja AI Service is a RESTful API built with [NestJS](https://nestjs.com/).
+MCP AI Service is a RESTful API built with [NestJS](https://nestjs.com/).
 
 ## Features
 

@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "Ninja AI Service",
-    "description": "Postman collection for Ninja AI API",
+    "name": "MCP AI Service",
+    "description": "Postman collection for MCP AI API",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
     "_exporter_id": "3489131"
   },
@@ -14,7 +14,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "url": "http://{{ninja_ai_baseUrl}}/health"
+            "url": "http://{{mcp_ai_baseUrl}}/health"
           },
           "response": []
         }
