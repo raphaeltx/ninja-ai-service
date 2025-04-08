@@ -89,7 +89,7 @@ get_service_url() {
 
 # Main script execution
 main() {
-  echo_app_title "ninja_ai_service_ascii_title"
+  echo_app_title "mcp_ai_service"
   create_kind_cluster
   build_docker_image
   load_docker_image
