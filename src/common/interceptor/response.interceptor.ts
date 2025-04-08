@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FormattedResponse } from 'src/domain/interfaces/formatted-response.interfaces';
 
 /**
  * ResponseTransformInterceptor transforms the response of the request.
@@ -40,7 +41,7 @@ export class ResponseTransformInterceptor<T> implements NestInterceptor {
     message: string,
     data: T,
     errorCode: string | null,
-  ): { success: boolean; message: string; data: T; errorCode: string | null } {
+  ): FormattedResponse<T> {
     return {
       success,
       message,

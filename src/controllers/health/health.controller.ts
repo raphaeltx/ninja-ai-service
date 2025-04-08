@@ -7,6 +7,6 @@ export class HealthController implements IHealthController {
 
   @Get()
   checkHealth() {
-    return { status: 'Hello from Ninja AI Service! I am alive!' };
+    return { status: 'Hello from MCP AI Service! I am alive!' };
   }
 }
