@@ -15,7 +15,7 @@ MCP AI Service is a RESTful API built with [NestJS](https://nestjs.com/).
    ├── domain/                          # Domain layer (core business logic)
    │   ├── dto/                         # Data Transfer Objects
    │   ├── entities/                    # Domain entities
-   │   |── interfaces/                  # Domain interfaces
+   │   ├── interfaces/                  # Domain interfaces
    │   └── models/                      # Domain models
    ├── infrastructure/                  # Infrastructure layer (frameworks, tools)
    │   ├── exceptions/                  # Custom exceptions
