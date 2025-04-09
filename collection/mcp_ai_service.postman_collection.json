@@ -19,6 +19,33 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "ChatController",
+      "item": [
+        {
+          "name": "Chat with AI",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"Hello, AI!\"\n}"
+            },
+            "url": {
+              "raw": "http://{{mcp_ai_baseUrl}}/chat",
+              "host": ["{{mcp_ai_baseUrl}}"],
+              "path": ["chat"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }

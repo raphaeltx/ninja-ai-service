@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { LoggingInterceptor } from './common/interceptor/logging.interceptor';
-import { ResponseTransformInterceptor } from './common/interceptor/response.interceptor';
+import { LoggingInterceptor } from './interfaces/interceptors/logging.interceptor';
+import { ResponseTransformInterceptor } from './interfaces/interceptors/response.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

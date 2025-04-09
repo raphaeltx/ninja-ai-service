@@ -17,7 +17,7 @@ export class LoggingInterceptor implements NestInterceptor {
   private readonly logger = new Logger(LoggingInterceptor.name);
 
   /**
-   * Intercepts the request and logs the relevant information.
+   * @description Intercepts the request and logs the relevant information.
    * @param context - The execution context.
    * @param next - The next handler in the chain.
    * @returns An observable of the response.
@@ -48,7 +48,7 @@ export class LoggingInterceptor implements NestInterceptor {
   }
 
   /**
-   * Formats the request log message.
+   * @description Formats the request log message.
    * @param method - The HTTP method of the request.
    * @param url - The URL of the request.
    * @param ip - The IP address of the client.
@@ -65,7 +65,7 @@ export class LoggingInterceptor implements NestInterceptor {
   }
 
   /**
-   * Formats the response log message.
+   * @description Formats the response log message.
    * @param method - The HTTP method of the request.
    * @param url - The URL of the request.
    * @param duration - The duration of the request in milliseconds.
@@ -80,7 +80,7 @@ export class LoggingInterceptor implements NestInterceptor {
   }
 
   /**
-   * Formats the error log message.
+   * @description Formats the error log message.
    * @param method - The HTTP method of the request.
    * @param url - The URL of the request.
    * @param duration - The duration of the request in milliseconds.
