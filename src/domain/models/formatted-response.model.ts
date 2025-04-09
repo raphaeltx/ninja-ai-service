@@ -7,7 +7,7 @@
  * @property {T} data - The data returned from the request.
  * @property {string | null} errorCode - An optional error code, if applicable.
  */
-export interface FormattedResponse<T> {
+export interface FormattedResponseModel<T> {
   success: boolean;
   message: string;
   data: T;

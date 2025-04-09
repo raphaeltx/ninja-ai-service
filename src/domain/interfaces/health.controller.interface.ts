@@ -4,7 +4,7 @@
  */
 export interface IHealthController {
   /**
-   * Checks the health of the application.
+   * @description Checks the health of the application.
    * @returns An object containing the health status.
    */
   checkHealth(): { status: string };

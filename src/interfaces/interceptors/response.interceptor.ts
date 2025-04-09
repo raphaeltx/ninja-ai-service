@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FormattedResponse } from 'src/domain/interfaces/formatted-response.interfaces';
+import { FormattedResponseModel } from 'src/domain/models/formatted-response.model';
 
 /**
  * ResponseTransformInterceptor transforms the response of the request.
@@ -15,7 +15,7 @@ import { FormattedResponse } from 'src/domain/interfaces/formatted-response.inte
 @Injectable()
 export class ResponseTransformInterceptor<T> implements NestInterceptor {
   /**
-   * Intercepts the request and transforms the response.
+   * @description Intercepts the request and transforms the response.
    * @param context - The execution context.
    * @param next - The next handler in the chain.
    * @returns An observable of the transformed response.
@@ -29,7 +29,7 @@ export class ResponseTransformInterceptor<T> implements NestInterceptor {
   }
 
   /**
-   * Formats the response object.
+   * @description Formats the response object.
    * @param success - Indicates if the request was successful.
    * @param message - A message describing the result of the request.
    * @param data - The data returned from the request.
@@ -41,7 +41,7 @@ export class ResponseTransformInterceptor<T> implements NestInterceptor {
     message: string,
     data: T,
     errorCode: string | null,
-  ): FormattedResponse<T> {
+  ): FormattedResponseModel<T> {
     return {
       success,
       message,
