@@ -69,7 +69,10 @@ validate_deployment_name() {
 apply_k8s_manifests() {
   echo_header "Applying Kubernetes manifests"
   validate_deployment_name
-  helm upgrade --install "$DEPLOYMENT_NAME" helm -f "$VALUES_DIR" --namespace "$NAMESPACE"
+  helm upgrade --install "$DEPLOYMENT_NAME" helm -f "$VALUES_DIR" --namespace "$NAMESPACE" \
+    --set aws.accessKeyId="$AWS_ACCESS_KEY_ID" \
+    --set aws.secretAccessKey="$AWS_SECRET_ACCESS_KEY" \
+    --set aws.sessionToken="$AWS_SESSION_TOKEN"
   echo_footer "Kubernetes manifests applied."
 }
 
