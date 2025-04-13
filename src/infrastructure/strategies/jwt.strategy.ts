@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
@@ -8,12 +8,21 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
  */
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  constructor(@Inject('JWT_SECRET') private readonly jwtSecret: string) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: 'your-secret-key',
+      secretOrKey: JwtStrategy.decodedSecret(jwtSecret),
+      algorithms: ['HS512'],
     });
+  }
+
+  /**
+   * @description Decodes the JWT secret from base64 to a buffer.
+   * @returns The decoded JWT secret as a buffer.
+   */
+  private static decodedSecret(jwtSecret: string): Buffer {
+    return Buffer.from(jwtSecret, 'base64');
   }
 
   /**
@@ -22,6 +31,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
    * @returns An object containing user information.
    */
   async validate(payload: any) {
+    console.log('JWT payload:', payload);
     return { userId: payload.sub, username: payload.username };
   }
 }

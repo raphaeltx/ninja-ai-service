@@ -5,6 +5,8 @@ import { JwtStrategy } from '../infrastructure/strategies/jwt.strategy';
 import { AwsSecretsService } from '../infrastructure/services/aws-secrets.service';
 import { JwtConfigService } from '../infrastructure/services/jwt-config.service';
 import { ConfigModule } from '@nestjs/config';
+import { JwtOptionsProvider } from 'src/infrastructure/providers/jwt-options.provider';
+import { JwtSecretProvider } from 'src/infrastructure/providers/jwt-sercet.provider';
 
 /**
  * AuthModule handles JWT authentication and related configurations.
@@ -16,12 +18,26 @@ import { ConfigModule } from '@nestjs/config';
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
-      useFactory: async (jwtConfigService: JwtConfigService) =>
-        jwtConfigService.createJwtOptions(),
-      inject: [JwtConfigService],
+      useFactory: async (jwtOptions: {
+        secret: string;
+        signOptions: { expiresIn: number };
+      }) => jwtOptions,
+      inject: ['JWT_OPTIONS'],
     }),
   ],
-  providers: [JwtStrategy, AwsSecretsService, JwtConfigService],
-  exports: [JwtModule, PassportModule, JwtConfigService],
+  providers: [
+    JwtStrategy,
+    AwsSecretsService,
+    JwtConfigService,
+    JwtOptionsProvider,
+    JwtSecretProvider,
+  ],
+  exports: [
+    JwtModule,
+    PassportModule,
+    JwtConfigService,
+    'JWT_OPTIONS',
+    'JWT_SECRET',
+  ],
 })
 export class AuthModule {}

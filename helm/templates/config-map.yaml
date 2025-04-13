@@ -5,3 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   APP_PORT: "8083"
+  AWS_REGION: {{ .Values.aws.region }}
+  AWS_ACCESS_KEY_ID: {{ .Values.aws.accessKeyId }}
+  AWS_SECRET_ACCESS_KEY: {{ .Values.aws.secretAccessKey }}
+  AWS_SESSION_TOKEN: {{ .Values.aws.sessionToken }}

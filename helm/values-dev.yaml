@@ -1,20 +1,23 @@
-apiVersion: v2
-name: my-helm-chart
-description: A Helm chart for deploying my application
-version: 0.1.0
+apiVersion: <apiVersion>
+name: <name>
+description: <description>
+version: <version>
 
-deploymentName: mcp-ai-service
-replicaCount: 1
-namespace: mcp-ai-service-dev
-configMapName: mcp-ai-service-config
-containerPort: 8083
+deploymentName: <deploymentName>
+replicaCount: <replicaCount>
+namespace: <namespace>
+configMapName: <configMapName>
+containerPort: <containerPort>
+
+aws:
+  region: <awsRegion>
 
 image:
-  repository: mcp-ai-service
-  pullPolicy: IfNotPresent
-  tag: "0.0.1"
+  repository: <repository>
+  pullPolicy: <pullPolicy>
+  tag: <imageTag>
 
 service:
-  type: LoadBalancer
-  port: 8083
-  targetPort: 8083
+  type: <serviceType>
+  port: <servicePort>
+  targetPort: <targetPort>
