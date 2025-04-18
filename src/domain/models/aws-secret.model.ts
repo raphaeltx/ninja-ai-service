@@ -7,4 +7,5 @@
 export interface AwsSecretModel {
   authServiceJwtSecret: string;
   authServiceAccessTokenValidity: number;
+  openAIApiKey: string;
 }

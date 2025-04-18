@@ -1,4 +1,5 @@
 import { ChatRequestDto } from 'src/domain/dto/chat-request.dto';
+import { ChatResponseModel } from '../models/chat-response.model';
 
 /**
  * Interface for the Chat Controller.
@@ -10,5 +11,5 @@ export interface IChatController {
    * @param chatRequestDto - The DTO containing the input prompt for the AI.
    * @returns An object containing the AI's response.
    */
-  chat(chatRequestDto: ChatRequestDto): { response: string };
+  chat(chatRequestDto: ChatRequestDto): Promise<ChatResponseModel>;
 }

@@ -1,37 +1,27 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { AwsSecretsService } from './aws-secrets.service';
+import { Injectable, Inject } from '@nestjs/common';
 import { IJwtConfigService } from 'src/domain/interfaces/jwt-config.service.interfaces';
-import { EmptyEnvVarException } from '../exceptions/empty-env-var.exception';
+import { AwsSecretModel } from 'src/domain/models/aws-secret.model';
 import { JwtConfigModel } from 'src/domain/models/jwt-config.model';
 
 @Injectable()
 export class JwtConfigService implements IJwtConfigService {
   constructor(
-    private readonly awsSecretsService: AwsSecretsService,
-    private readonly configService: ConfigService,
+    @Inject('AWS_SECRETS') private readonly secrets: AwsSecretModel,
   ) {}
 
-  async createJwtOptions(): Promise<JwtConfigModel> {
-    const secretArn = this.getSecretArn();
-    const secret = await this.awsSecretsService.getSecret(secretArn);
+  createJwtOptions(): JwtConfigModel {
+    const secret = this.secrets.authServiceJwtSecret;
+    const accessTokenValidity = this.secrets.authServiceAccessTokenValidity;
+
+    if (!secret || !accessTokenValidity) {
+      throw new Error(
+        'JWT_SECRET or JWT_ACCESS_TOKEN_VALIDITY is not defined in the secrets.',
+      );
+    }
 
     return {
-      secret: secret.authServiceJwtSecret,
-      signOptions: { expiresIn: secret.authServiceAccessTokenValidity },
+      secret,
+      signOptions: { expiresIn: accessTokenValidity },
     };
-  }
-
-  /**
-   * @description Retrieves the secret ARN from the configuration service.
-   * @returns The secret ARN as a string.
-   * @throws EmptyEnvVarException if the secret ARN is not set or empty.
-   */
-  private getSecretArn(): string {
-    const awsRegion = this.configService.get<string>('AWS_SECRET_ARN');
-    if (!awsRegion || awsRegion.trim() === '') {
-      throw new EmptyEnvVarException('AWS_SECRET_ARN');
-    }
-    return awsRegion;
   }
 }

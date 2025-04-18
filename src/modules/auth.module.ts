@@ -7,6 +7,7 @@ import { JwtConfigService } from '../infrastructure/services/jwt-config.service'
 import { ConfigModule } from '@nestjs/config';
 import { JwtOptionsProvider } from 'src/infrastructure/providers/jwt-options.provider';
 import { JwtSecretProvider } from 'src/infrastructure/providers/jwt-sercet.provider';
+import { AwsSecretsModule } from './aws-secrets.module';
 
 /**
  * AuthModule handles JWT authentication and related configurations.
@@ -24,6 +25,7 @@ import { JwtSecretProvider } from 'src/infrastructure/providers/jwt-sercet.provi
       }) => jwtOptions,
       inject: ['JWT_OPTIONS'],
     }),
+    AwsSecretsModule,
   ],
   providers: [
     JwtStrategy,
