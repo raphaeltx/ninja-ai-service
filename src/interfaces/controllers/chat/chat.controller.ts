@@ -17,6 +17,8 @@ export class ChatController implements IChatController {
     const { prompt } = chatRequestDto;
     const completion = await this.mcpService.generateText(prompt, 1000);
 
+    console.log('Chat response:', completion);
+
     return { completion };
   }
 }

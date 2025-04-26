@@ -18,30 +18,7 @@ export class McpService implements IMcpService {
     // TODO: Handle the response and extract the text
     console.log('Generating text with MCP Server...', prompt);
     return new Promise((resolve, reject) => {
-      try {
-        this.mcpServer.prompt(
-          prompt,
-          z.string().parse(maxTokens.toString()),
-          { maxTokens: z.string() },
-          (args, extra) => {
-            console.log('Response args:', args);
-
-            return {
-              messages: [
-                {
-                  role: 'assistant',
-                  content: {
-                    type: 'text',
-                    text: 'Response processed successfully',
-                  },
-                },
-              ],
-            };
-          },
-        );
-      } catch (error) {
-        throw new Error('Failed to generate text with MCP Server');
-      }
+      resolve("Testing");
     });
   }
 }

@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  mcp-ai-service:
+  ai-service:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: mcp-ai-service
-    image: mcp-ai-service
+    container_name: ai-service
+    image: ai-service
     ports:
       - "3000:3000"
     environment:

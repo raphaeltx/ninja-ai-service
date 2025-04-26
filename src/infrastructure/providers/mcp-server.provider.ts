@@ -2,6 +2,7 @@ import { Provider } from '@nestjs/common';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { AwsSecretModel } from 'src/domain/models/aws-secret.model';
 import { McpApiKeyNotFoundException } from '../exceptions/mcp-api-key-not-found.exception';
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
 /**
  * McpServerProvider provides an instance of the MCP server for AI model interactions.
@@ -9,7 +10,7 @@ import { McpApiKeyNotFoundException } from '../exceptions/mcp-api-key-not-found.
  */
 export const McpServerProvider: Provider = {
   provide: 'MCP_SERVER',
-  useFactory: (secrets: AwsSecretModel) => {
+  useFactory: async (secrets: AwsSecretModel) => {
     const provider = process.env.MCP_PROVIDER || 'openai';
     const apiKey = secrets.openAIApiKey;
 
@@ -17,13 +18,18 @@ export const McpServerProvider: Provider = {
       throw new McpApiKeyNotFoundException();
     }
 
-    return new McpServer({
+    const mcpServer = new McpServer({
       name: 'MCP Server',
       description: 'MCP Server for AI model interactions',
       version: '1.0.0',
       provider,
       apiKey,
     });
+
+    const transport = new StdioServerTransport();
+    await mcpServer.connect(transport);
+
+    return mcpServer;
   },
   inject: ['AWS_SECRETS'],
 };

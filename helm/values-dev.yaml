@@ -1,23 +1,23 @@
-apiVersion: <apiVersion>
-name: <name>
-description: <description>
-version: <version>
+apiVersion: v2
+name: my-helm-chart
+description: A Helm chart for deploying my application
+version: 0.1.0
 
-deploymentName: <deploymentName>
-replicaCount: <replicaCount>
-namespace: <namespace>
-configMapName: <configMapName>
-containerPort: <containerPort>
+deploymentName: ai-service
+replicaCount: 1
+namespace: ai-service-dev
+configMapName: ai-service-config
+containerPort: 8083
 
 aws:
-  region: <awsRegion>
+  region: us-east-1
 
 image:
-  repository: <repository>
-  pullPolicy: <pullPolicy>
-  tag: <imageTag>
+  repository: ai-service
+  pullPolicy: IfNotPresent
+  tag: "0.0.1"
 
 service:
-  type: <serviceType>
-  port: <servicePort>
-  targetPort: <targetPort>
+  type: LoadBalancer
+  port: 8083
+  targetPort: 8083
