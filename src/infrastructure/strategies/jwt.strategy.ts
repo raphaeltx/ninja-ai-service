@@ -8,7 +8,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
  */
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(@Inject('JWT_SECRET') private readonly jwtSecret: string) {
+  constructor(@Inject('JWT_SECRETS') private readonly jwtSecret: string) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -31,7 +31,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
    * @returns An object containing user information.
    */
   async validate(payload: any) {
-    console.log('JWT payload:', payload);
     return { userId: payload.sub, username: payload.username };
   }
 }

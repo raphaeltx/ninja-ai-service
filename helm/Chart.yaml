@@ -1,3 +1,3 @@
-name: mcp-ai-service
+name: ai-service
 description: A Helm chart for deploying MCP AI Service
 version: 0.1.0

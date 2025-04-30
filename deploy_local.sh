@@ -4,9 +4,9 @@ set -euo pipefail
 
 # Constants
 CLUSTER_NAME="local-cluster"
-NAMESPACE="mcp-ai-service-dev"
-IMAGE_NAME="mcp-ai-service:0.0.1"
-SERVICE_NAME="mcp-ai-service"
+NAMESPACE="ai-service-dev"
+IMAGE_NAME="ai-service:0.0.1"
+SERVICE_NAME="ai-service"
 VALUES_DIR="helm/values-dev.yaml"
 DEPLOYMENT_NAME=""
 
