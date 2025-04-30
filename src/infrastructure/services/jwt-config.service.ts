@@ -14,6 +14,7 @@ export class JwtConfigService implements IJwtConfigService {
     const accessTokenValidity = this.secrets.authServiceAccessTokenValidity;
 
     if (!secret || !accessTokenValidity) {
+      // TODO: Create custom error class
       throw new Error(
         'JWT_SECRET or JWT_ACCESS_TOKEN_VALIDITY is not defined in the secrets.',
       );

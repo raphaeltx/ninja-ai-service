@@ -6,7 +6,7 @@ import { AwsSecretsService } from '../infrastructure/services/aws-secrets.servic
 import { JwtConfigService } from '../infrastructure/services/jwt-config.service';
 import { ConfigModule } from '@nestjs/config';
 import { JwtOptionsProvider } from 'src/infrastructure/providers/jwt-options.provider';
-import { JwtSecretProvider } from 'src/infrastructure/providers/jwt-sercet.provider';
+import { JwtSecretsProvider } from 'src/infrastructure/providers/jwt-secrets.provider';
 import { AwsSecretsModule } from './aws-secrets.module';
 
 /**
@@ -32,14 +32,14 @@ import { AwsSecretsModule } from './aws-secrets.module';
     AwsSecretsService,
     JwtConfigService,
     JwtOptionsProvider,
-    JwtSecretProvider,
+    JwtSecretsProvider,
   ],
   exports: [
     JwtModule,
     PassportModule,
     JwtConfigService,
     'JWT_OPTIONS',
-    'JWT_SECRET',
+    'JWT_SECRETS',
   ],
 })
 export class AuthModule {}

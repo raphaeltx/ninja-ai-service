@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "MCP AI Service",
-    "description": "Postman collection for MCP AI API",
+    "name": "AI Service",
+    "description": "Postman collection for AI Service",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
     "_exporter_id": "3489131"
   },
@@ -14,7 +14,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "url": "http://{{mcp_ai_baseUrl}}/health"
+            "url": "http://{{ai_baseUrl}}/health"
           },
           "response": []
         }
@@ -38,8 +38,8 @@
               "raw": "{\n  \"prompt\": \"Hello, AI!\"\n}"
             },
             "url": {
-              "raw": "http://{{mcp_ai_baseUrl}}/chat",
-              "host": ["{{mcp_ai_baseUrl}}"],
+              "raw": "http://{{ai_baseUrl}}/chat",
+              "host": ["{{ai_baseUrl}}"],
               "path": ["chat"]
             }
           },

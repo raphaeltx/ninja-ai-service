@@ -16,7 +16,6 @@ export class McpService implements IMcpService {
    */
   async generateText(prompt: string, maxTokens: number): Promise<string> {
     // TODO: Handle the response and extract the text
-    console.log('Generating text with MCP Server...', prompt);
     return new Promise((resolve, reject) => {
       resolve("Testing");
     });

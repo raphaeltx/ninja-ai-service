@@ -5,6 +5,7 @@ import { AuthModule } from './modules/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { McpModule } from './modules/mcp.module';
 import { AwsSecretsModule } from './modules/aws-secrets.module';
+import { AIModule } from './modules/ai.module';
 
 /**
  * AppModule is the root module of the application.
@@ -19,6 +20,7 @@ import { AwsSecretsModule } from './modules/aws-secrets.module';
     AuthModule,
     ChatModule,
     McpModule,
+    AIModule,
   ],
 })
 export class AppModule {}

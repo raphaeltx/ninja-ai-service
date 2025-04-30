@@ -1,6 +1,6 @@
-# MCP AI Service
+# AI Service
 
-MCP AI Service is a RESTful API built with [NestJS](https://nestjs.com/).
+AI Service is a RESTful API built with [NestJS](https://nestjs.com/).
 
 ## Features
 
